@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JSFiddle 385ra7Ly</title>
+
+  <style>
+    
+  </style>
+
+  
+</head>
+<body>
+  <!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Wolfie Motors - Luxury Cars</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      margin: 0;
+      color: white;
+      background: black;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .luxury-btn {
+      padding: 10px 20px;
+      border: 2px solid white;
+      transition: all 0.3s;
+    }
+
+    .luxury-btn:hover {
+      background: white;
+      color: black;
+    }
+
+    .menu {
+      display: none;
+    }
+
+    .menu.open {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      right: 10px;
+      top: 60px;
+      background: rgba(0, 0, 0, 0.9);
+      padding: 10px;
+      z-index: 10;
+    }
+
+    @media (min-width: 768px) {
+      .menu {
+        display: flex;
+        flex-direction: row;
+        gap: 16px;
+      }
+    }
+
+    #gameCanvas {
+      background: #333;
+      display: block;
+      margin: 20px auto;
+      border: 3px solid white;
+    }
+
+    .control-btn {
+      background: white;
+      color: black;
+      padding: 10px 20px;
+      margin: 10px;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="fixed top-0 w-full flex justify-between p-4 bg-black bg-opacity-90 z-50">
+    <div class="text-2xl font-bold">WOLFIE <span class="text-gray-400">Motors</span></div>
+    <div class="menu">
+      <a href="#home" class="luxury-btn">Home</a>
+      <a href="#cars" class="luxury-btn">Cars</a>
+      <a href="#brands" class="luxury-btn">Brands</a>
+      <a href="#game" class="luxury-btn">Game</a>
+      <a href="#contact" class="luxury-btn">Contact</a>
+    </div>
+    <button class="text-3xl md:hidden" onclick="toggleMenu()">☰</button>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="h-screen flex justify-center items-center bg-cover bg-center"
+    style="background-image: url('https://cdn.pixabay.com/photo/2016/03/09/09/30/sportscar-1245720_1280.jpg');">
+    <div class="text-center">
+      <h1 class="text-6xl font-bold mb-4">Luxury Awaits</h1>
+      <a href="#cars" class="luxury-btn">Explore Cars</a>
+    </div>
+  </section>
+
+  <!-- Cars Section -->
+  <section id="cars" class="py-16 bg-gray-900 text-center">
+    <h2 class="text-5xl mb-10">Our Collection</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 px-4">
+      <div>
+        <img src="https://cdn.pixabay.com/photo/2015/01/19/13/51/car-604019_1280.jpg" class="w-full h-56 object-cover">
+        <h3 class="text-3xl mt-2">Lamborghini Aventador</h3>
+        <a href="#contact" class="luxury-btn mt-2 inline-block">Book Now</a>
+      </div>
+      <div>
+        <img src="https://cdn.pixabay.com/photo/2017/09/02/13/26/ferrari-2705464_1280.jpg" class="w-full h-56 object-cover">
+        <h3 class="text-3xl mt-2">Ferrari F8</h3>
+        <a href="#contact" class="luxury-btn mt-2 inline-block">Book Now</a>
+      </div>
+      <div>
+        <img src="https://cdn.pixabay.com/photo/2017/03/27/14/56/porsche-2179220_1280.jpg" class="w-full h-56 object-cover">
+        <h3 class="text-3xl mt-2">Porsche 911</h3>
+        <a href="#contact" class="luxury-btn mt-2 inline-block">Book Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Brands Section -->
+  <section id="brands" class="py-16 bg-gray-800 text-center">
+    <h2 class="text-4xl mb-8">Associated Brands</h2>
+    <div class="flex justify-center gap-10 flex-wrap">
+      <img src="https://1000logos.net/wp-content/uploads/2018/02/Porsche-Logo.png" class="h-16">
+      <img src="https://1000logos.net/wp-content/uploads/2018/03/Lamborghini-Logo.png" class="h-16">
+      <img src="https://1000logos.net/wp-content/uploads/2018/02/Ferrari-Logo.png" class="h-16">
+    </div>
+  </section>
+
+  <!-- Mini Game -->
+  <section id="game" class="py-16 bg-black text-center">
+    <h2 class="text-5xl mb-6">Mini Car Game</h2>
+    <canvas id="gameCanvas" width="300" height="400"></canvas>
+    <div>
+      <button onclick="moveLeft()" class="control-btn">◀️ Left</button>
+      <button onclick="moveRight()" class="control-btn">▶️ Right</button>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="py-16 bg-gray-900 text-center">
+    <h2 class="text-4xl mb-4">Contact Us</h2>
+    <p>Email: <a href="mailto:jedidiahtimotius@gmail.com" class="underline">jedidiahtimotius@gmail.com</a></p>
+    <p>WhatsApp: <a href="https://wa.me/6281224822481" class="underline">+62 812-2482-2481</a></p>
+  </section>
+
+  <footer class="py-4 text-center bg-black text-gray-400">&copy; 2025 Wolfie Motors</footer>
+
+  <script>
+    function toggleMenu() {
+      document.querySelector('.menu').classList.toggle('open');
+    }
+
+    // Mini Game Logic
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+    let carX = 130, trafficCars = [], gameOver = false;
+
+    function drawCar(x, y, color = 'red') {
+      ctx.fillStyle = color;
+      ctx.fillRect(x, y, 40, 60);
+    }
+
+    function updateGame() {
+      if (gameOver) return alert('Game Over! Refresh to play again.');
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      if (Math.random() < 0.02) trafficCars.push({ x: [90, 170][Math.floor(Math.random() * 2)], y: -60 });
+      trafficCars.forEach(c => { c.y += 4; drawCar(c.x, c.y, 'blue'); });
+      trafficCars = trafficCars.filter(c => c.y < 400);
+      drawCar(carX, 330);
+      trafficCars.forEach(c => { if (c.y + 60 > 330 && c.x === carX) gameOver = true; });
+      requestAnimationFrame(updateGame);
+    }
+
+    function moveLeft() { if (carX > 90) carX -= 80; }
+    function moveRight() { if (carX < 170) carX += 80; }
+
+    updateGame();
+  </script>
+
+</body>
+</html>
+
+  <script>
+    
+  </script>
+</body>
+</html>
